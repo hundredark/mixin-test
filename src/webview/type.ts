@@ -13,7 +13,7 @@ export interface Messengers {
   playlist: (audio: string[]) => any;
   reloadTheme: (args?: string) => void;
   close: (args?: string) => void;
-  getAssets: (assets: string[]) => any;
+  getAssets: (assets: string[], cb: (res: any[]) => void) => any;
 }
 
 declare global {
