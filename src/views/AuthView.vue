@@ -2,7 +2,8 @@
 import { onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { MixinApi, getED25519KeyPair } from '@mixin.dev/mixin-node-sdk';
-import { APP_ID } from '@/utils/constant';
+import { APP_ID, APP_SECRET } from '@/utils/constant';
+import router from '@/router';
 
 const route = useRoute();
 
@@ -15,6 +16,7 @@ const useLogin = async (code: string) => {
       client_id: APP_ID,
       code: code,
       ed25519: publicKey,
+      client_secret: APP_SECRET
     });
     const { scope, authorization_id } = token;
 
@@ -32,6 +34,7 @@ const useLogin = async (code: string) => {
     client = MixinApi({ keystore });
     const user = await client.user.profile();
     console.log(user);
+    router.push('/')
   } catch {}
 };
 
