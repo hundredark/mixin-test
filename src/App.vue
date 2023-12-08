@@ -1,21 +1,5 @@
-<script setup lang="ts">
-import { onMounted, ref } from 'vue';
-import { WebViewApi } from './webview';
-
-const assets = ref<any[]>([]);
-
-const client = WebViewApi();
-onMounted(() => {
-  client.getAssets(["c6d0c728-2624-429b-8e0d-d9d19b6592fa", "43d61dcd-e413-450d-80b8-101d5e903357"], (res) => {
-    assets.value = res
-  })
-})
-</script>
-
 <template>
-  <div>
-    <div v-for="a of assets">{{ a }}</div>
-  </div>
+  <router-view></router-view>
 </template>
 
 <style scoped>
