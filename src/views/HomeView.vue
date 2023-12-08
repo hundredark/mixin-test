@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { WebViewApi } from '../webview';
+import { WebViewApi } from 'mixin-sdk-test';
 import { APP_ID } from '../utils/constant';
 
 const assets = ref<any[]>([]);

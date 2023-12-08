@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import { useRoute } from 'vue-router';
-import { MixinApi, getED25519KeyPair } from '@mixin.dev/mixin-node-sdk';
+import { useRoute, useRouter } from 'vue-router';
+import { MixinApi, getED25519KeyPair } from 'mixin-sdk-test';
 import { APP_ID, APP_SECRET } from '@/utils/constant';
-import router from '@/router';
 
 const route = useRoute();
+const router = useRouter();
 
 const useLogin = async (code: string) => {
   const { privateKey, publicKey } = getED25519KeyPair();
