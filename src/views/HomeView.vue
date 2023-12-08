@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
-import { MixinApi, WebViewApi, getED25519KeyPair, AuthenticationUserResponse } from 'mixin-sdk-test';
+import { MixinApi, WebViewApi, getED25519KeyPair, type AuthenticationUserResponse } from 'mixin-sdk-test';
 import { APP_ID, APP_SECRET } from '@/utils/constant';
 
 const route = useRoute();
