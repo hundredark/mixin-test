@@ -2514,10 +2514,10 @@ minimatch@^9.0.0, minimatch@^9.0.3:
   dependencies:
     brace-expansion "^2.0.1"
 
-mixin-sdk-test@6.0.2:
-  version "6.0.2"
-  resolved "https://registry.npmjs.org/mixin-sdk-test/-/mixin-sdk-test-6.0.2.tgz#ab858201c7744fdf635445bf822a4573c6683def"
-  integrity sha512-lkgQhO6H+FIuvifYT3lK/6OI+0UN+pEP0rSv+VTc6/fdCDTA6p7yHlzQpET8vZupA5P/sHjkLOMFeInoHTJtkQ==
+mixin-sdk-test@6.0.3:
+  version "6.0.3"
+  resolved "https://registry.npmjs.org/mixin-sdk-test/-/mixin-sdk-test-6.0.3.tgz#31a515d434930512d379dc60170973c29788b5be"
+  integrity sha512-2ktV6x+pwshmsmVbm03kzWYJXoF1xAf2WF7GyoyAz2VgQRMbxjLufLB42fMzCcSw1UkjybRLFVn8nkxP1Yw4gQ==
   dependencies:
     "@ethersproject/providers" "^5.6.8"
     "@noble/curves" "^1.2.0"
