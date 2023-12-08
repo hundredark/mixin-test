@@ -14,6 +14,10 @@ const useToLogin = () => {
   const url = `https://mixin.one/oauth/authorize?client_id=${APP_ID}&scope=PROFILE:READ+ASSETS:READ&response_type=code`;
   location.href = url;
 };
+
+const useGetContext  = () => {
+  result.value = client.getMixinContext();
+};
 const useGetAssets = () => {
   client.getAssets(["c6d0c728-2624-429b-8e0d-d9d19b6592fa", "43d61dcd-e413-450d-80b8-101d5e903357"], (res) => {
     result.value = res
@@ -33,6 +37,9 @@ const useReloadTheme = () => {
   head.appendChild(meta)
   client.reloadTheme()
 };
+const usePlayList = () => {
+  client.playlist(["http://codeskulptor-demos.commondatastorage.googleapis.com/pang/paza-moduless.mp3"])
+}
 
 const useLogin = async (code: string) => {
   const { privateKey, publicKey } = getED25519KeyPair();
@@ -75,12 +82,16 @@ onMounted(() => {
       <div>Home</div>
       <div v-if="user">{{ user.full_name }}</div>
       <button v-else @click="useToLogin">Login</button>
+      <div class="self-end mt-4">
+        <button class="mt-10" @click="client.close">Close</button>
+      </div>
     </div>
-    <button class="mt-10" @click="client.getMixinContext">Get Context</button>
-    <button class="mt-10" @click="useGetAssets">Get Assets</button>
-    <button class="mt-10" @click="useReloadTheme">PlayList</button>
-    <button class="mt-10" @click="useReloadTheme">Reload Theme</button>
-    <button class="mt-10" @click="client.close">Close</button>
+    <div class="flex flex-col">
+      <button class="mt-10" @click="useGetContext">Get Context</button>
+      <button class="mt-10" @click="useGetAssets">Get Assets</button>
+      <button class="mt-10" @click="usePlayList">PlayList</button>
+      <button class="mt-10" @click="useReloadTheme">Reload Theme</button>
+    </div>
     <div v-if="result">{{ result }}</div>
   </div>
 </template>
