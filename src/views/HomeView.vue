@@ -39,7 +39,19 @@ const useReloadTheme = () => {
 };
 const usePlayList = () => {
   client.playlist(["http://codeskulptor-demos.commondatastorage.googleapis.com/pang/paza-moduless.mp3"])
-}
+};
+const useGetTipAddress = () => {
+  // @ts-ignore
+  client.getTipAddress("43d61dcd-e413-450d-80b8-101d5e903357", (res) => {
+    result.value = res
+  })
+};
+const useTipSign = () => {
+  // @ts-ignore
+  client.tipSign("43d61dcd-e413-450d-80b8-101d5e903357", "43d61dcd-e413-450d-80b8-101d5e903357", (res) => {
+    result.value = res
+  })
+};
 
 const useLogin = async (code: string) => {
   const { privateKey, publicKey } = getED25519KeyPair();
@@ -91,7 +103,9 @@ onMounted(() => {
       <button class="mt-10" @click="useGetAssets">Get Assets</button>
       <button class="mt-10" @click="usePlayList">PlayList</button>
       <button class="mt-10" @click="useReloadTheme">Reload Theme</button>
+      <button class="mt-10" @click="useGetTipAddress">Tip Address</button>
+      <button class="mt-10" @click="useTipSign">Tip Sign</button>
     </div>
-    <div v-if="result">{{ result }}</div>
+    <div class="mt-10" v-if="result">{{ result }}</div>
   </div>
 </template>
