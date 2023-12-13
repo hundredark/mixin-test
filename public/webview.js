@@ -59,6 +59,11 @@
   };
 
   const getAssets = (assets, cb) => {
+    cb(
+      getMixinContext().platform,
+      window.MixinContext, 
+      typeof window.MixinContext.getAssets,
+    )
     switch (getMixinContext().platform) {
       case 'iOS':
         if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.getAssets) {
@@ -70,8 +75,6 @@
       case 'Desktop':
         if (window.MixinContext && typeof window.MixinContext.getAssets === 'function') {
           window.assetsCallbackFunction = cb;
-          console.assert(window.MixinContext.getAssets)
-          console.assert(window.assetsCallbackFunction)
           window.MixinContext.getAssets(assets, 'assetsCallbackFunction');
         }
         break;
