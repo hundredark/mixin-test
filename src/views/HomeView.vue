@@ -20,7 +20,7 @@ const useGetContext  = () => {
 };
 const useGetAssets = () => {
   // @ts-ignore
-  window.MixinWebview.getAssets([], (res: any) => {
+  window.MixinWebview.getAssets(["965e5c6e-434c-3fa9-b780-c50f43cd955c"], (res: any) => {
     result.value = res
   })
 };
