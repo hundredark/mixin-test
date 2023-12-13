@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
-import { MixinApi, WebViewApi, getED25519KeyPair, type AuthenticationUserResponse } from 'mixin-sdk-test';
+import { MixinApi, getED25519KeyPair, type AuthenticationUserResponse } from 'mixin-sdk-test';
 import { APP_ID, APP_SECRET } from '@/utils/constant';
 
-const client = WebViewApi();
+// @ts-ignore
+const client = window.MixinWebview;
 const route = useRoute();
 
 const result = ref<any>();
@@ -19,7 +20,7 @@ const useGetContext  = () => {
   result.value = client.getMixinContext();
 };
 const useGetAssets = () => {
-  client.getAssets([], (res) => {
+  client.getAssets([], (res: any) => {
     result.value = res
   })
 };
