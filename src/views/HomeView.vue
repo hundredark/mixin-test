@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
-import { MixinApi, getED25519KeyPair, type AuthenticationUserResponse } from 'mixin-sdk-test';
+import { MixinApi, WebViewApi, getED25519KeyPair, type AuthenticationUserResponse } from 'mixin-sdk-test';
 import { APP_ID, APP_SECRET } from '@/utils/constant';
 
 const route = useRoute();
@@ -92,6 +92,9 @@ const useLogin = async (code: string) => {
 onMounted(() => {
   const code = route.query.code;
   if (code) useLogin(code as string);
+
+  // @ts-ignore
+  window.MixinWebview = WebViewApi();
 })
 </script>
 
