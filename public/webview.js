@@ -1,3 +1,5 @@
+const { assert } = require("console");
+
 // WebView
 (function () {
   const getMixinContext = () => {
@@ -70,6 +72,8 @@
       case 'Desktop':
         if (window.MixinContext && typeof window.MixinContext.getAssets === 'function') {
           window.assetsCallbackFunction = cb;
+          console.assert(window.MixinContext.getAssets)
+          console.assert(window.assetsCallbackFunction)
           window.MixinContext.getAssets(assets, 'assetsCallbackFunction');
         }
         break;
