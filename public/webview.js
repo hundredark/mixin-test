@@ -73,6 +73,12 @@
         break;
       case 'Android':
       case 'Desktop':
+        cb(
+          'Android or Desktop',
+          getMixinContext().platform,
+          window.MixinContext, 
+          typeof window.MixinContext.getAssets,
+        )
         if (window.MixinContext && typeof window.MixinContext.getAssets === 'function') {
           window.assetsCallbackFunction = cb;
           window.MixinContext.getAssets(assets, 'assetsCallbackFunction');
