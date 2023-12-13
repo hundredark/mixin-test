@@ -94,7 +94,7 @@ onMounted(() => {
   if (code) useLogin(code as string);
 
   // @ts-ignore
-  window.MixinWebview = WebViewApi();
+  // window.MixinWebview = WebViewApi();
 })
 </script>
 

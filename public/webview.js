@@ -58,19 +58,19 @@
     }
   };
 
-  const getAssets = async (assets, cb) => {
+  const getAssets = (assets, cb) => {
     switch (getMixinContext().platform) {
       case 'iOS':
         if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.getAssets) {
           window.assetsCallbackFunction = cb;
-          await window.webkit.messageHandlers.getAssets.postMessage([assets, 'assetsCallbackFunction']);
+          window.webkit.messageHandlers.getAssets.postMessage([assets, 'assetsCallbackFunction']);
         }
         break;
       case 'Android':
       case 'Desktop':
         if (window.MixinContext && typeof window.MixinContext.getAssets === 'function') {
           window.assetsCallbackFunction = cb;
-          await window.MixinContext.getAssets(assets, 'assetsCallbackFunction');
+          window.MixinContext.getAssets(assets, 'assetsCallbackFunction');
         }
         break;
       default:
