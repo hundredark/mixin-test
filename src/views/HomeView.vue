@@ -4,8 +4,6 @@ import { useRoute } from 'vue-router';
 import { MixinApi, getED25519KeyPair, type AuthenticationUserResponse } from 'mixin-sdk-test';
 import { APP_ID, APP_SECRET } from '@/utils/constant';
 
-// @ts-ignore
-const client = window.MixinWebview;
 const route = useRoute();
 
 const result = ref<any>();
@@ -18,14 +16,18 @@ const useToLogin = () => {
 
 const useGetContext  = () => {
   // @ts-ignore
-  console.log(window.MixinWebview)
-  result.value = client.getMixinContext();
+  result.value = window.MixinWebview.getMixinContext();
 };
 const useGetAssets = () => {
-  client.getAssets([], (res: any) => {
+  // @ts-ignore
+  window.MixinWebview.getAssets([], (res: any) => {
     result.value = res
   })
 };
+const useClose = () => {
+  // @ts-ignore
+  window.MixinWebview.close();
+}
 const useReloadTheme = () => {    
   let head = document.getElementsByTagName('head')[0]
   let metas = document.getElementsByTagName('meta')
@@ -38,20 +40,22 @@ const useReloadTheme = () => {
   meta.name = 'theme-color'
   meta.content = '#3F5ACB'
   head.appendChild(meta)
-  client.reloadTheme()
+  // @ts-ignore
+  window.MixinWebview.reloadTheme()
 };
 const usePlayList = () => {
-  client.playlist(["http://codeskulptor-demos.commondatastorage.googleapis.com/pang/paza-moduless.mp3"])
+  // @ts-ignore
+  window.MixinWebview.playlist(["http://codeskulptor-demos.commondatastorage.googleapis.com/pang/paza-moduless.mp3"])
 };
 const useGetTipAddress = () => {
   // @ts-ignore
-  client.getTipAddress("43d61dcd-e413-450d-80b8-101d5e903357", (res) => {
+  window.MixinWebview.getTipAddress("43d61dcd-e413-450d-80b8-101d5e903357", (res) => {
     result.value = res
   })
 };
 const useTipSign = () => {
   // @ts-ignore
-  client.tipSign("43d61dcd-e413-450d-80b8-101d5e903357", "43d61dcd-e413-450d-80b8-101d5e903357", (res) => {
+  window.MixinWebview.tipSign("43d61dcd-e413-450d-80b8-101d5e903357", "43d61dcd-e413-450d-80b8-101d5e903357", (res) => {
     result.value = res
   })
 };
@@ -98,7 +102,7 @@ onMounted(() => {
       <div v-if="user">{{ user.full_name }}</div>
       <button v-else @click="useToLogin">Login</button>
       <div class="self-end mt-4">
-        <button class="mt-10" @click="client.close">Close</button>
+        <button class="mt-10" @click="useClose">Close</button>
       </div>
     </div>
     <div class="flex flex-col">
