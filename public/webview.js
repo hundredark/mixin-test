@@ -75,6 +75,7 @@
       case 'Desktop':
         if (window.MixinContext && typeof window.MixinContext.getAssets === 'function') {
           window.assetsCallbackFunction = cb;
+          cb(window.assetsCallbackFunction)
           window.MixinContext.getAssets(assets, 'assetsCallbackFunction');
         }
         break;
