@@ -1,5 +1,3 @@
-const { assert } = require("console");
-
 // WebView
 (function () {
   const getMixinContext = () => {
