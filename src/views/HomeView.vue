@@ -17,6 +17,8 @@ const useToLogin = () => {
 };
 
 const useGetContext  = () => {
+  // @ts-ignore
+  console.log(window.MixinWebview)
   result.value = client.getMixinContext();
 };
 const useGetAssets = () => {
