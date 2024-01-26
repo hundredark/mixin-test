@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
-import { MixinApi, WebViewApi, getED25519KeyPair, type AuthenticationUserResponse } from 'mixin-sdk-test';
+import { MixinApi, getED25519KeyPair, type AuthenticationUserResponse, base64RawURLEncode } from '@mixin.dev/mixin-node-sdk';
 import { APP_ID, APP_SECRET } from '@/utils/constant';
 
 const route = useRoute();
@@ -61,14 +61,14 @@ const useTipSign = () => {
 };
 
 const useLogin = async (code: string) => {
-  const { privateKey, publicKey } = getED25519KeyPair();
-  let client = MixinApi();
+  const { publicKey, seed } = getED25519KeyPair();
 
   try {
+    let client = MixinApi();
     const token = await client.oauth.getToken({
       client_id: APP_ID,
       code: code,
-      ed25519: publicKey,
+      ed25519: base64RawURLEncode(publicKey),
       client_secret: APP_SECRET
     });
     const { scope, authorization_id } = token;
@@ -79,10 +79,10 @@ const useLogin = async (code: string) => {
     }
 
     const keystore = {
-      user_id: APP_ID,
+      app_id: APP_ID,
       scope,
       authorization_id,
-      private_key: privateKey,
+      session_private_key: seed.toString("hex"),
     };
     client = MixinApi({ keystore });
     user.value = await client.user.profile();
