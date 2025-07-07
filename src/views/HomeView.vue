@@ -20,7 +20,9 @@ const useGetContext  = () => {
 };
 const useGetAssets = async () => {
   const cb = (res: any) => {
-    result.value = res
+    let str = res.toString();
+    str += ' | type: ' + typeof res;
+    result.value = str
   };
   // @ts-ignore
   window.MixinWebview.getAssets(["965e5c6e-434c-3fa9-b780-c50f43cd955c"], cb)
