@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
-import { MixinApi, getED25519KeyPair, type AuthenticationUserResponse, base64RawURLEncode } from '@mixin.dev/mixin-node-sdk';
+import { MixinApi, getED25519KeyPair, type AuthenticationUserResponse, base64RawURLEncode, WebViewApi, sleep } from '@mixin.dev/mixin-node-sdk';
 import { APP_ID, APP_SECRET } from '@/utils/constant';
 
 const route = useRoute();
@@ -19,10 +19,14 @@ const useGetContext  = () => {
   result.value = window.MixinWebview.getMixinContext();
 };
 const useGetAssets = () => {
-  // @ts-ignore
-  window.MixinWebview.getAssets(["965e5c6e-434c-3fa9-b780-c50f43cd955c"], (res: any) => {
+  const cb = (res: any) => {
     result.value = res
-  })
+  };
+  // @ts-ignore
+  window.MixinWebview.getAssets(["965e5c6e-434c-3fa9-b780-c50f43cd955c"], cb)
+  sleep(1000 * 5)
+  const api = WebViewApi();
+  api.getAssets(["965e5c6e-434c-3fa9-b780-c50f43cd955c"], cb)
 };
 const useClose = () => {
   // @ts-ignore
