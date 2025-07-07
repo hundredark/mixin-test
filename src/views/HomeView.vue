@@ -18,13 +18,13 @@ const useGetContext  = () => {
   // @ts-ignore
   result.value = window.MixinWebview.getMixinContext();
 };
-const useGetAssets = () => {
+const useGetAssets = async () => {
   const cb = (res: any) => {
     result.value = res
   };
   // @ts-ignore
   window.MixinWebview.getAssets(["965e5c6e-434c-3fa9-b780-c50f43cd955c"], cb)
-  sleep(1000 * 5)
+  await sleep(1000 * 5)
   const api = WebViewApi();
   api.getAssets(["965e5c6e-434c-3fa9-b780-c50f43cd955c"], cb)
 };
