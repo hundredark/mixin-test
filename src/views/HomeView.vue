@@ -20,8 +20,9 @@ const useGetContext  = () => {
 };
 const useGetAssets = async () => {
   const cb = (res: any) => {
+    const typ = typeof res;
     let str = res.toString();
-    str += ' | type: ' + typeof res;
+    str += ' | type: ' + typ
     result.value = str
   };
   // @ts-ignore
