@@ -7,6 +7,7 @@ import { APP_ID, APP_SECRET } from '@/utils/constant';
 const route = useRoute();
 
 const result = ref<any>();
+const status = ref('initial');
 const user = ref<AuthenticationUserResponse | undefined>()
 
 const useToLogin = () => {
@@ -23,7 +24,8 @@ const useGetAssets = async () => {
     result.value = res
   };
   // @ts-ignore
-  window.MixinWebview.getAssets([], cb)
+  await window.MixinWebview.getAssets([], cb);
+  status.value = 'done';
 };
 const useClose = () => {
   // @ts-ignore
@@ -109,6 +111,7 @@ onMounted(() => {
         <button class="mt-10" @click="useClose">Close</button>
       </div>
     </div>
+    <div>{{ status }}</div>
     <div class="flex flex-col">
       <button class="mt-10" @click="useGetContext">Get Context</button>
       <button class="mt-10" @click="useGetAssets">Get Assets</button>
