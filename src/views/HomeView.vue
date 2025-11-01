@@ -9,6 +9,7 @@ const route = useRoute();
 const result = ref<any>();
 const ts = ref<string[]>([]);
 const user = ref<AuthenticationUserResponse | undefined>()
+const webview = WebViewApi();
 
 const useToLogin = () => {
   const url = `https://mixin.one/oauth/authorize?client_id=${APP_ID}&scope=PROFILE:READ+ASSETS:READ&response_type=code`;
@@ -26,9 +27,9 @@ const useGetAssets = async () => {
     ts.value.push(t)
   };
   // @ts-ignore
-  await window.MixinWebview.getAssets([], cb);
+  await webview.getAssets([], cb);
   const t = 'done:' + Date.now().toString()
-    ts.value.push(t)
+  ts.value.push(t)
 };
 const useClose = () => {
   // @ts-ignore
