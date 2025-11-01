@@ -20,16 +20,10 @@ const useGetContext  = () => {
 };
 const useGetAssets = async () => {
   const cb = (res: any) => {
-    const typ = typeof res;
-    let str = res.toString();
-    str += ' | type: ' + typ
-    result.value = str
+    result.value = res
   };
   // @ts-ignore
-  window.MixinWebview.getAssets(["965e5c6e-434c-3fa9-b780-c50f43cd955c"], cb)
-  await sleep(1000 * 5)
-  const api = WebViewApi();
-  api.getAssets(["965e5c6e-434c-3fa9-b780-c50f43cd955c"], cb)
+  window.MixinWebview.getAssets([], cb)
 };
 const useClose = () => {
   // @ts-ignore
