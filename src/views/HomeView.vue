@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
-import { MixinApi, getED25519KeyPair, type AuthenticationUserResponse, base64RawURLEncode, WebViewApi, sleep } from '@mixin.dev/mixin-node-sdk';
+import { MixinApi, getED25519KeyPair, type AuthenticationUserResponse, base64RawURLEncode, WebViewApi } from 'mixin-sdk-test';
 import { APP_ID, APP_SECRET } from '@/utils/constant';
 
 const route = useRoute();
@@ -23,13 +23,11 @@ const useGetContext  = () => {
 const useGetAssets = async () => {
   const cb = (res: any) => {
     result.value = res
-    const t = 'cb:' + Date.now().toString()
-    ts.value.push(t)
+    ts.value.push(typeof res)
+    ts.value.push(res.length)
   };
   // @ts-ignore
   await webview.getAssets([], cb);
-  const t = 'done:' + Date.now().toString()
-  ts.value.push(t)
 };
 const useClose = () => {
   // @ts-ignore
