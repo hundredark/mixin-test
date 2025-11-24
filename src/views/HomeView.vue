@@ -69,6 +69,7 @@ const useTipSign = () => {
 const signBotSignature = () => {
   alert("signBotSignature start");
   (window as any)['signBotSignatureCB'] = async (timestamp: string, signature: string) => {
+    alert("cb start")
     try {
       const id = v4();
       const res = await axios.get('https://api.mixin.one/me', {
