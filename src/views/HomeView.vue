@@ -66,7 +66,8 @@ const useTipSign = () => {
     result.value = res
   })
 };
-const signBotSignature = () => {
+const signBotSignature = async () => {
+  alert("signBotSignature start");
   (window as any)['signBotSignatureCB'] = async (timestamp: string, signature: string) => {
     try {
       const id = v4();
@@ -83,7 +84,9 @@ const signBotSignature = () => {
     }
     delete (window as any)['signBotSignatureCB']
   }
-  webview.signBotSignature(APP_ID, false, 'GET', '/me', "", 'signBotSignatureCB')
+  alert("signBotSignature boot " + APP_ID + "" + !!(window as any)['signBotSignatureCB']);
+  await webview.signBotSignature(APP_ID, false, 'GET', '/me', "", 'signBotSignatureCB')
+  alert("signBotSignature end");
 }
 
 const useLogin = async (code: string) => {
