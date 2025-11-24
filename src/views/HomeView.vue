@@ -85,7 +85,8 @@ const signBotSignature = () => {
     }
   }
   alert("signBotSignature boot " + APP_ID + " " + !!(window as any)['signBotSignatureCB']);
-  webview.signBotSignature(APP_ID, false, 'GET', '/me', "", 'signBotSignatureCB')
+  // @ts-ignore
+  window.MixinWebview.signBotSignature(APP_ID, false, 'GET', '/me', "", 'signBotSignatureCB')
   alert("signBotSignature end");
 }
 
