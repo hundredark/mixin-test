@@ -781,6 +781,15 @@ axios@1.8.2:
     form-data "^4.0.0"
     proxy-from-env "^1.1.0"
 
+axios@^1.13.2:
+  version "1.13.2"
+  resolved "https://registry.npmjs.org/axios/-/axios-1.13.2.tgz#9ada120b7b5ab24509553ec3e40123521117f687"
+  integrity sha512-VPk9ebNqPcy5lRGuSlKx752IlDatOjT9paPlm8A7yOuW2Fbvp4X3JznJtT4f0GzGLLiWE9W8onz51SqLYwzGaA==
+  dependencies:
+    follow-redirects "^1.15.6"
+    form-data "^4.0.4"
+    proxy-from-env "^1.1.0"
+
 balanced-match@^1.0.0:
   version "1.0.2"
   resolved "https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.2.tgz"
@@ -2320,10 +2329,10 @@ minimatch@^9.0.0, minimatch@^9.0.3:
   dependencies:
     brace-expansion "^2.0.1"
 
-mixin-sdk-test@6.1.0:
-  version "6.1.0"
-  resolved "https://registry.npmjs.org/mixin-sdk-test/-/mixin-sdk-test-6.1.0.tgz#230a0ff7b36857e8fb76648017eb1a21f8db474a"
-  integrity sha512-7/Vhj6ZyJL08fwa70tIEfNRxNFmSXJ5neZ41gEcR/ZbxDTcYXchqZEDF7u+KNoP4A8BK4KMsWXrOq09unl+bwg==
+mixin-sdk-test@6.1.1:
+  version "6.1.1"
+  resolved "https://registry.npmjs.org/mixin-sdk-test/-/mixin-sdk-test-6.1.1.tgz#7b8f5cd916900d161ad7c14bee067e773f9f7741"
+  integrity sha512-YtVN55RdQsHdK1Fh97A4B/8f4dRF63MW9e0tLk6mYRH6I9V1R86Ltibl5Pb6+BlBk1+9GcCj5M2KqMcpnu51sA==
   dependencies:
     "@noble/ciphers" "^1.0.0"
     "@noble/curves" "^1.2.0"
@@ -3315,6 +3324,11 @@ uuid@^11.1.0:
   version "11.1.0"
   resolved "https://registry.npmjs.org/uuid/-/uuid-11.1.0.tgz#9549028be1753bb934fc96e2bca09bb4105ae912"
   integrity sha512-0/A9rDy9P7cJ+8w1c9WD9V//9Wj15Ce2MPz8Ri6032usz+NfePxx5AcN3bN+r6ZL6jEo066/yNYB3tn4pQEx+A==
+
+uuid@^13.0.0:
+  version "13.0.0"
+  resolved "https://registry.npmjs.org/uuid/-/uuid-13.0.0.tgz#263dc341b19b4d755eb8fe36b78d95a6b65707e8"
+  integrity sha512-XQegIaBTVUjSHliKqcnFqYypAd4S+WCYt5NIeRs6w/UAry7z8Y9j5ZwRRL4kzq9U3sD6v+85er9FvkEaBpji2w==
 
 uuid@^9.0.0:
   version "9.0.1"

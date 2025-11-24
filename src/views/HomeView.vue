@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
+import { v4 } from 'uuid';
+import axios from 'axios';
 import { MixinApi, getED25519KeyPair, type AuthenticationUserResponse, base64RawURLEncode, WebViewApi } from 'mixin-sdk-test';
 import { APP_ID, APP_SECRET } from '@/utils/constant';
 
@@ -64,6 +66,25 @@ const useTipSign = () => {
     result.value = res
   })
 };
+const signBotSignature = () => {
+  (window as any)['signBotSignatureCB'] = async (timestamp: string, signature: string) => {
+    try {
+      const id = v4();
+      const res = await axios.get('https://api.mixin.one/me', {
+        headers: {
+          'X-Request-Id': id,
+          'Authorization': `Bearer ${signature}`
+        }
+      });
+      alert(res)
+      alert(timestamp)
+    } catch(e) {
+      alert(e)
+    }
+    delete (window as any)['signBotSignatureCB']
+  }
+  webview.signBotSignature(APP_ID, false, 'GET', '/me', "", 'signBotSignatureCB')
+}
 
 const useLogin = async (code: string) => {
   const { publicKey, seed } = getED25519KeyPair();
@@ -121,6 +142,7 @@ onMounted(() => {
       <button class="mt-10" @click="useReloadTheme">Reload Theme</button>
       <button class="mt-10" @click="useGetTipAddress">Tip Address</button>
       <button class="mt-10" @click="useTipSign">Tip Sign</button>
+      <button class="mt-10" @click="signBotSignature">Sign Bot Signature</button>
     </div>
     <div class="mt-10" v-if="result">{{ result }}</div>
   </div>
