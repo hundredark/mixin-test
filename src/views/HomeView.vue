@@ -78,7 +78,7 @@ const signBotSignature = () => {
           'Authorization': `Bearer ${signature}`
         }
       });
-      alert(res)
+      alert(JSON.stringify(res))
       alert(timestamp)
     } catch(e) {
       alert("cb error")
