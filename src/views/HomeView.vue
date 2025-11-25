@@ -84,8 +84,9 @@ const signBotSignature = () => {
       alert(e)
     }
   }
+  alert("signBotSignature boot " + APP_ID);
   // @ts-ignore
-  alert("signBotSignature boot " + APP_ID + " " + !!window.MixinWebview.signBotSignature);
+  alert(Object.keys(window.MixinWebview));
   // @ts-ignore
   window.MixinWebview.signBotSignature(APP_ID, false, 'GET', '/me', "", 'signBotSignatureCB')
   alert("signBotSignature end");
