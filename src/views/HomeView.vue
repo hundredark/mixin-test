@@ -85,7 +85,8 @@ const signBotSignature = () => {
       alert(e)
     }
   }
-  alert("cb init" + " " + !!(window as any)['signBotSignatureCB'] +  " " + APP_ID);
+  // @ts-ignore
+  alert("cb init" + " " + !!(window as any)['signBotSignatureCB'] +  " " + typeof window.MixinContext.signBotSignature);
 
   try {
     // @ts-ignore
