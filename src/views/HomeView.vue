@@ -90,9 +90,7 @@ const signBotSignature = () => {
 
   try {
     // @ts-ignore
-    alert(Object.keys(window.MixinContext));
-    // @ts-ignore
-    webview.signBotSignature([APP_ID, false, 'GET', '/me', "", 'signBotSignatureCB'])
+    window.MixinContext.signBotSignature([APP_ID, false, 'GET', '/me', "", 'signBotSignatureCB'])
     alert("signBotSignature end");
   } catch(e) {
     alert("signBotSignature error")
