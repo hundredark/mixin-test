@@ -81,15 +81,22 @@ const signBotSignature = () => {
       alert(res)
       alert(timestamp)
     } catch(e) {
+      alert("cb error")
       alert(e)
     }
   }
-  alert("signBotSignature boot " + APP_ID);
-  // @ts-ignore
-  alert(Object.keys(window.MixinContext));
-  // @ts-ignore
-  window.MixinContext.signBotSignature(APP_ID, false, 'GET', '/me', "", 'signBotSignatureCB')
-  alert("signBotSignature end");
+  alert("cb init" + " " + !!(window as any)['signBotSignatureCB'] +  " " + APP_ID);
+
+  try {
+    // @ts-ignore
+    alert(Object.keys(window.MixinContext));
+    // @ts-ignore
+    window.MixinContext.signBotSignature(APP_ID, false, 'GET', '/me', "", 'signBotSignatureCB')
+    alert("signBotSignature end");
+  } catch(e) {
+    alert("signBotSignature error")
+    alert(e)
+  }
 }
 
 const useLogin = async (code: string) => {
