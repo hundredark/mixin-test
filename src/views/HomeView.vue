@@ -71,14 +71,14 @@ const signBotSignature = () => {
   (window as any)['signBotSignatureCB'] = async (timestamp: string, signature: string) => {
     alert("cb start")
     try {
-      const id = v4();
-      const res = await axios.get('https://api.mixin.one/me', {
-        headers: {
-          'X-Request-Id': id,
-          'Authorization': `Bearer ${signature}`
-        }
-      });
-      alert(JSON.stringify(res))
+      // const id = v4();
+      // const res = await axios.get('https://api.mixin.one/me', {
+      //   headers: {
+      //     'X-Request-Id': id,
+      //     'Authorization': `Bearer ${signature}`
+      //   }
+      // });
+      alert(signature)
       alert(timestamp)
     } catch(e) {
       alert("cb error")
@@ -92,7 +92,7 @@ const signBotSignature = () => {
     // @ts-ignore
     alert(Object.keys(window.MixinContext));
     // @ts-ignore
-    window.MixinContext.signBotSignature([APP_ID, false, 'GET', '/me', "", 'signBotSignatureCB'])
+    webview.signBotSignature([APP_ID, false, 'GET', '/me', "", 'signBotSignatureCB'])
     alert("signBotSignature end");
   } catch(e) {
     alert("signBotSignature error")

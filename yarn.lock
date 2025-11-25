@@ -2329,10 +2329,10 @@ minimatch@^9.0.0, minimatch@^9.0.3:
   dependencies:
     brace-expansion "^2.0.1"
 
-mixin-sdk-test@6.1.2:
-  version "6.1.2"
-  resolved "https://registry.npmjs.org/mixin-sdk-test/-/mixin-sdk-test-6.1.2.tgz#0b4947f5e65489330ade6995e35ad2c958f024c8"
-  integrity sha512-JDNkGVaEGZU1+dt/bPfQq1U9RADd2PjdTBglyohomAMv2Br9wtBFKjS7BM6r6L3RNGdwi3Ybqnn3W5Tc5wmEfA==
+mixin-sdk-test@6.1.3:
+  version "6.1.3"
+  resolved "https://registry.npmjs.org/mixin-sdk-test/-/mixin-sdk-test-6.1.3.tgz#cd27a3436a40cf2d34aa95935ded55e4c8e04be6"
+  integrity sha512-jj6Srxov8hxCuv4sqJ24I3piFHzh0z9BmG4urQjTORaU4iOUOVyN9IJtxjkhN/uxvIJIR9dszsaN7nmsumtReg==
   dependencies:
     "@noble/ciphers" "^1.0.0"
     "@noble/curves" "^1.2.0"
