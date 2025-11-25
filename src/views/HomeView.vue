@@ -92,7 +92,7 @@ const signBotSignature = () => {
     // @ts-ignore
     alert(Object.keys(window.MixinContext));
     // @ts-ignore
-    window.MixinContext.signBotSignature(APP_ID, false, 'GET', '/me', "", 'signBotSignatureCB')
+    window.MixinContext.signBotSignature([APP_ID, false, 'GET', '/me', "", 'signBotSignatureCB'])
     alert("signBotSignature end");
   } catch(e) {
     alert("signBotSignature error")
